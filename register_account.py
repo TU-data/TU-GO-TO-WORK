@@ -2,11 +2,14 @@ import json
 import os
 from tkinter import Tk, Label, Entry, Button, messagebox
 
-CONFIG_PATH = os.path.join(os.path.dirname(__file__), "config.json")
+CONFIG_PATH = "config.json"  # 수정된 경로 (현재 폴더에 저장)
 
 def save_credentials(user_id, password):
-    with open(CONFIG_PATH, "w") as f:
-        json.dump({"id": user_id, "pw": password}, f)
+    try:
+        with open(CONFIG_PATH, "w") as f:
+            json.dump({"id": user_id, "pw": password}, f)
+    except Exception as e:
+        messagebox.showerror("저장 실패", f"config.json 저장 중 오류 발생: {e}")
 
 def on_submit():
     uid = entry_id.get()

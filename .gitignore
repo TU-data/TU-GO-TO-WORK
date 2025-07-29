@@ -8,3 +8,11 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Added by Gemini
+/출근 자동화/
+/출근 자동화.zip
+auto_attendance.spec
+chromedriver.exe
+image.png
+register_account.spec
