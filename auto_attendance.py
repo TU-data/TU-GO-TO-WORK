@@ -1,7 +1,6 @@
 import sys
 import webbrowser
-import tkinter as tk
-from tkinter import messagebox
+import pymsgbox
 
 # --- 설정 ---
 LOGIN_URL = "https://tugether.daouoffice.com/login"
@@ -11,19 +10,15 @@ def show_alert():
     """
     메시지 박스를 화면에 표시합니다.
     """
-    root = tk.Tk()
-    root.withdraw()  # 메인 윈도우 숨기기
-    root.attributes("-topmost", True)  # 다른 모든 창 위에 표시
-
-    response = messagebox.askyesno(
-        title="출근 처리 확인",
-        message="그룹웨어로 이동하여 출근을 처리하시겠습니까?"
+    response = pymsgbox.confirm(
+        text="그룹웨어로 이동하여 출근을 처리하시겠습니까?",
+        title="출근 확인",
+        buttons=["예", "아니오"]
     )
 
-    if response:
+    if response == "예":
         webbrowser.open(LOGIN_URL)
-
-    root.destroy()
+    # If response is "아니오" or None (user closed dialog), program exits naturally
 
 def main():
     """

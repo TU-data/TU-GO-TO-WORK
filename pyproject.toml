@@ -6,7 +6,8 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "pyinstaller>=5.0.0",
-    "pywin32"
+    "pywin32",
+    "pymsgbox"
 ]
 
 [build-system]
