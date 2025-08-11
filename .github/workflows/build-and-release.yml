@@ -30,7 +30,7 @@ jobs:
         run: python -m nuitka --standalone --windows-console-mode=disable --assume-yes-for-downloads --output-dir=dist auto_attendance.py
 
       - name: List contents of dist folder
-        run: dir /s dist
+        run: Get-ChildItem -Recurse dist
 
       - name: Zip the output folder
         run: Compress-Archive -Path dist/auto_attendance.dist -DestinationPath dist/TUGoToWork.zip
