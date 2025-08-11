@@ -26,13 +26,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller
 
-      - name: Build exe with PyInstaller
-        run: |
-          pyinstaller --onefile --windowed --name TUGoToWork auto_attendance.py
+      - name: Build with PyInstaller (Folder)
+        run: pyinstaller --onedir --windowed --name TUGoToWork auto_attendance.py
 
-      - name: Create Release
+      - name: Zip the output folder
+        run: Compress-Archive -Path dist/TUGoToWork -DestinationPath dist/TUGoToWork.zip
+
+      - name: Create Release with Zip
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/TUGoToWork.exe
+          files: dist/TUGoToWork.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
