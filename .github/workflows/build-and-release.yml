@@ -26,12 +26,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install nuitka pywin32
 
-      - name: Compile with Nuitka
-        run: python -m nuitka --onefile --windows-console-mode=disable --enable-plugin=tk-inter --assume-yes-for-downloads --output-dir=dist --output-filename=TUGoToWork auto_attendance.py
+      - name: Compile with Nuitka (Folder)
+        run: python -m nuitka --standalone --windows-console-mode=disable --enable-plugin=tk-inter --assume-yes-for-downloads --output-dir=dist auto_attendance.py
 
-      - name: Create Release with Nuitka EXE
+      - name: Zip the output folder
+        run: Compress-Archive -Path dist/auto_attendance.dist -DestinationPath dist/TUGoToWork.zip
+
+      - name: Create Release with Zip
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/TUGoToWork.exe
+          files: dist/TUGoToWork.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
