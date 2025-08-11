@@ -1,47 +1,30 @@
-import winreg
 import os
-import sys
+import winshell
+
+# --- 설정 ---
+APP_NAME = "TUGoToWork"
+# ---
 
 def remove_from_startup():
-    """윈도우 시작 프로그램에서 제거"""
+    """
+    시작프로그램 폴더에서 바로가기를 삭제합니다.
+    """
     try:
-        key = winreg.OpenKey(
-            winreg.HKEY_CURRENT_USER,
-            r"Software\Microsoft\Windows\CurrentVersion\Run",
-            0,
-            winreg.KEY_SET_VALUE
-        )
-        
-        winreg.DeleteValue(key, "TUGoToWork")
-        winreg.CloseKey(key)
-        
-        # 등록 완료 표시 파일도 제거
-        base_dir = get_base_dir()
-        startup_file = os.path.join(base_dir, "startup_registered.txt")
-        if os.path.exists(startup_file):
-            os.remove(startup_file)
-        
-        print("윈도우 시작 프로그램에서 제거되었습니다.")
-        return True
-    except Exception as e:
-        print(f"시작 프로그램 제거 실패: {e}")
-        return False
+        startup_folder = winshell.startup()
+        shortcut_path = os.path.join(startup_folder, f"{APP_NAME}.lnk")
 
-def get_base_dir():
-    """기본 디렉토리 경로 반환"""
-    if getattr(sys, 'frozen', False):
-        return os.path.dirname(sys.executable)
-    else:
-        return os.path.dirname(__file__)
+        if os.path.exists(shortcut_path):
+            os.remove(shortcut_path)
+            print(f"성공: 시작프로그램에서 '{APP_NAME}.lnk'를 삭제했습니다.")
+        else:
+            print(f"정보: 시작프로그램에 '{APP_NAME}'이(가) 등록되어 있지 않습니다.")
+
+    except Exception as e:
+        print(f"오류: 시작프로그램에서 삭제하는 중 문제가 발생했습니다.")
+        print(e)
 
 if __name__ == "__main__":
-    print("TU Go To Work - 시작 프로그램 제거")
-    print("=" * 40)
-    
-    response = input("시작 프로그램에서 제거하시겠습니까? (y/n): ")
-    if response.lower() in ['y', 'yes', '예']:
-        remove_from_startup()
-    else:
-        print("취소되었습니다.")
-    
-    input("Enter를 누르면 종료됩니다...")
+    print(f"'{APP_NAME}'을(를) 시작프로그램에서 삭제합니다...")
+    remove_from_startup()
+    # 사용자가 결과를 확인할 수 있도록 잠시 대기
+    input("\n작업을 완료했습니다. Enter 키를 눌러 창을 닫으세요...")
