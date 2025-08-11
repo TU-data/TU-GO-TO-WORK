@@ -1,18 +1,24 @@
-# Python-generated files
+# Python bytecode
 __pycache__/
 *.py[oc]
+
+# Build artifacts
 build/
 dist/
-wheels/
 *.egg-info
+*.spec
+wheels/
 
 # Virtual environments
-.venv
+.venv/
 
-# Added by Gemini
-/출근 자동화/
-/출근 자동화.zip
-auto_attendance.spec
+# OS generated files
+.DS_Store
+
+# 기타 불필요한 파일
 chromedriver.exe
 image.png
-register_account.spec
+
+# 프로젝트별 임시/압축 파일
+출근 자동화/
+출근 자동화.zip
