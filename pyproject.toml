@@ -6,18 +6,9 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "pyinstaller>=5.0.0",
-    "pywin32",
-    "pymsgbox"
+    "pymsgbox>=1.0.9"
 ]
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
-
-[tool.pyinstaller]
-onefile = true
-windowed = true
-name = "TUGoToWork"
-icon = null
-add-data = []
-hidden-imports = ["tkinter", "winreg", "ctypes"]
