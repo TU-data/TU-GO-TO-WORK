@@ -8,11 +8,6 @@
 - 🎯 **사용자 친화적 메뉴**: 직관적인 메인 메뉴
 - 🛡️ **향상된 오류 처리**: 안정적인 실행과 사용자 피드백
 
-## 🚀 다운로드
-
-[Releases](https://github.com/yourusername/TU-go-to-work/releases) 페이지에서 최신 버전을 다운로드하세요.
-- 250812 : Release v2.3.0 -> zip 파일
-
 ## 📋 시스템 요구사항
 
 - **운영체제**: Windows 10/11
@@ -38,7 +33,7 @@
 ### 2단계: 프로그램 다운로드
 
 **위 설정 완료 후 다운로드:**
-1. [Releases](https://github.com/yourusername/TU-go-to-work/releases) 페이지에서 최신 버전 다운로드
+1. [Releases](https://github.com/TU-data/TU-go-to-work/releases) 페이지에서 최신 버전 다운로드
 2. `TUGoToWork-windows.zip` 파일 다운로드
 3. 압축 해제하여 `TUGoToWork.exe` 준비
 
