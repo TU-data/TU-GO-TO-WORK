@@ -90,19 +90,9 @@ def show_attendance_question():
     )
 
     if response == "예":
-        try:
-            webbrowser.open(LOGIN_URL)
-            pymsgbox.alert(
-                text="그룹웨어가 열렸습니다.\n출근 처리를 완료해주세요.",
-                title="그룹웨어 열기 완료",
-                button="확인"
-            )
-        except Exception as e:
-            pymsgbox.alert(
-                text=f"브라우저를 열 수 없습니다: {e}",
-                title="오류",
-                button="확인"
-            )
+        # 웹사이트 열기
+        webbrowser.open(LOGIN_URL)
+        # 알럿은 자동으로 닫힘
 
 def show_main_menu():
     """메인 메뉴 표시"""
